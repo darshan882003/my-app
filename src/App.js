@@ -1,7 +1,8 @@
 import './App.css';
 import Navbar from './components/Navbar'
 // import TextForm from './components/TextForm';
-import About from './components/About1'
+// import About from './components/About1'
+import TextForm from './components/TextForm'
 
 // let name="darshan";
 function App() {
