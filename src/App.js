@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar'
 // import TextForm from './components/TextForm';
@@ -6,6 +7,16 @@ import TextForm from './components/TextForm'
 
 // let name="darshan";
 function App() {
+  const  [mode, setmode] = useState('light')
+  const toggle =()=>{
+    if(mode === 'light'){
+      setmode('dark')
+      document.body.style.backgroundColor='#0f032f'
+    }else{
+      setmode('light')
+      document.body.style.backgroundColor='white'
+    }
+  }
   return (
  <>
  {/* <h1>i am {name}</h1>
@@ -20,9 +31,9 @@ function App() {
 
  </div> */}
  
-<Navbar title="TextUtils"  about="Aboutus"/>
+<Navbar title="TextUtils"  about="Aboutus" mode={mode} toggle={toggle}/>
 <div className="container mx-10">
-    <TextForm heading="Enter the text to analise below"/>
+    <TextForm heading="Enter the text to analise below" mode={mode}/>
 </div>
 {/* <About/> */}
  </>
