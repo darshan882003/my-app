@@ -5,6 +5,8 @@ import Navbar from './components/Navbar'
 // import About from './components/About1'
 import TextForm from './components/TextForm'
 import Alert from './components/Alert';
+import About from './components/About1'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // let name="darshan";
 function App() {
@@ -46,13 +48,19 @@ function App() {
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores consequatur rem cupiditate voluptatem, nihil cum neque quisquam in, nesciunt a accusamus, quia voluptas quam sequi blanditiis ex minus tempora mollitia sint minima optio. Itaque.</p>
 
  </div> */}
+ <Navbar title="TextUtils"  about="Aboutus" mode={mode} toggle={toggle}/>
+ <Alert alert={alert}/>
  
-<Navbar title="TextUtils"  about="Aboutus" mode={mode} toggle={toggle}/>
-<Alert alert={alert}/>
-<div className="container mx-10">
-    <TextForm showAlert={showAlert} heading="Enter the text to analise below" mode={mode}/>
-</div>
-{/* <About/> */}
+ <div className="container mx-10">
+  <Routes>
+  {/* use the exact just before the path in Route because if we put the exact then the react will match exactly or else the react will match partially */}
+    <Route exact path='/about' element={<About/>}/>
+    
+     <Route exact path='/' element={<TextForm showAlert={showAlert} heading="Enter the text to analise below" mode={mode}/>}/>
+
+  </Routes>
+  </div>
+  
  </>
   );
 }
