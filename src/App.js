@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 // import TextForm from './components/TextForm';
 // import About from './components/About1'
 import TextForm from './components/TextForm'
+import Alert from './components/Alert';
 
 // let name="darshan";
 function App() {
@@ -12,10 +13,25 @@ function App() {
     if(mode === 'light'){
       setmode('dark')
       document.body.style.backgroundColor='#0f032f'
+      showAlert("the dark made is enables","success")
     }else{
       setmode('light')
       document.body.style.backgroundColor='white'
+      
     }
+  }
+
+  const [alert, setalert] = useState(null)
+  const showAlert=(message,type)=>{
+    setalert(
+      {
+        msg: message,
+        type: type,
+      }
+    )
+    setTimeout(() => {
+      setalert(null)
+    }, 3000);
   }
   return (
  <>
@@ -32,8 +48,9 @@ function App() {
  </div> */}
  
 <Navbar title="TextUtils"  about="Aboutus" mode={mode} toggle={toggle}/>
+<Alert alert={alert}/>
 <div className="container mx-10">
-    <TextForm heading="Enter the text to analise below" mode={mode}/>
+    <TextForm showAlert={showAlert} heading="Enter the text to analise below" mode={mode}/>
 </div>
 {/* <About/> */}
  </>
